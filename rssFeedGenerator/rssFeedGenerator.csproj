@@ -73,6 +73,7 @@
     </Compile>
     <Compile Include="data\RootObjekt.cs" />
     <Compile Include="data\Tag.cs" />
+    <Compile Include="Webserver\Webserver.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

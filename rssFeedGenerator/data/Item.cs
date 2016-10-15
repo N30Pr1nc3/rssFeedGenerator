@@ -39,5 +39,10 @@ namespace rssFeedGenerator
         public int flags { get; set; }
         public string user { get; set; }
         public int mark { get; set; }
+
+        internal bool matchesFilter(string filter)
+        {
+            return this._loadet;
+        }
     }
 }

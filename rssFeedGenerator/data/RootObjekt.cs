@@ -66,6 +66,56 @@ namespace rssFeedGenerator
             JsonConvert.PopulateObject(json, this);
         }
 
+        internal string createFeed(string[] _filter)
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.Append("<rss  version = \"2.0\">");
+            sb.Append("<channel>");
+            sb.Append("<title>Pr0gramm</title>");
+            sb.Append("<link>http://pr0gramm.com</link>");
+            sb.Append("<description>Pr0gramm</ description >");
+            sb.Append("<language > de - de </ language >");
+            sb.Append("<webMaster ></ webMaster >");
+            //sb.Append("< atom:link href = "http://me-studium.de/rss.php" rel = "self" type = "application/rss+xml" />
+
+            foreach (Item tItem in this.items)
+            {
+                foreach(string filter in _filter)
+                {
+                    if (tItem.matchesFilter(filter))
+                    {
+                        sb.Append("<item>");
+                        sb.Append("<title>");
+                        foreach(Tag tag in tItem.tags)
+                        {
+                            sb.Append(tag.tag);
+                            sb.Append(" ");
+                        }                        
+                        sb.Append("</title>");
+                        sb.Append("<link>");
+                        sb.Append("http:////pr0gramm.com//new//");
+                        sb.Append(tItem.id);
+                        sb.Append("</ link>");
+                        sb.Append("<pubDate >");
+                        sb.Append(tItem.loadet);
+                        sb.Append("</ pubDate >");
+                        sb.Append("<guid>");
+                        sb.Append(tItem.id);
+                        sb.Append("</guid>");
+                        sb.Append("<description >");
+                        sb.Append("<![CDATA[");
+                        sb.Append("<img border = 0 src = \"http://img.pr0gramm.com/2016/10/15/6a02fc158df94448.jpg\" ></ img >");
+                        sb.Append("]]>");
+                        sb.Append("</description>");
+                        sb.Append("</item>");
+                        break;
+                    }
+                }
+            }
+            sb.Append("</channel></rss>");
+            return sb.ToString();
+        }
+
         private void updateItem(Item item)
         {
             HttpWebRequest request = (HttpWebRequest)WebRequest.Create(string.Concat("http://pr0gramm.com/api/items/info?itemId=", item.id.ToString()));
