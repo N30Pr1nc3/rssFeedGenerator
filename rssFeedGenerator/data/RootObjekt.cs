@@ -88,7 +88,7 @@ namespace rssFeedGenerator
                         sb.Append("<title>");
                         foreach(Tag tag in tItem.tags)
                         {
-                            sb.Append(tag.tag);
+                            //sb.Append(tag.tag);
                             sb.Append(" ");
                         }                        
                         sb.Append("</title>");
