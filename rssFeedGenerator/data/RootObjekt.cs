@@ -69,7 +69,7 @@ namespace rssFeedGenerator
         internal string createFeed(string[] _filter)
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("<rss  version = \"2.0\">");
+            sb.Append("<rss xmlns:atom=\"http://www.w3.org/2005/Atom\" version = \"2.0\">");
             sb.Append("<channel>");
             sb.Append("<title>Pr0gramm</title>");
             sb.Append("<link>http://pr0gramm.com</link>");
