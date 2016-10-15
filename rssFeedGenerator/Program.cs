@@ -12,7 +12,7 @@ namespace rssFeedGenerator
 {
     class Program
     {
-        public static string savefile = @".\data.txt";
+        public static string savefile = @"data.txt";
         static void Main(string[] args)
         {
             RootObject objekt;
