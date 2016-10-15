@@ -93,7 +93,7 @@ namespace rssFeedGenerator
                         }                        
                         sb.Append("</title>");
                         sb.Append("<link>");
-                        sb.Append("http:////pr0gramm.com//new//");
+                        sb.Append("http://pr0gramm.com/new/");
                         sb.Append(tItem.id);
                         sb.Append("</ link>");
                         sb.Append("<pubDate >");
