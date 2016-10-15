@@ -29,19 +29,22 @@ namespace rssFeedGenerator
         {
             if (DateTime.Now.Subtract(this.lastUpdate).TotalMinutes > 20)
             {
+                Program.log("update Root");
                 this.lastUpdate = DateTime.Now;
                 this.updateRoot();
                 return;
             }
             foreach(Item item in this.items)
             {
+                Program.log("update Item");
                 if (!item.loadet)
                 {
                     this.updateItem(item);
                     return;
                 }
             }
-            foreach(Item item in this.items)
+            Program.log("Reset Loadet");
+            foreach (Item item in this.items)
             {
                 item.loadet = false;
             }            

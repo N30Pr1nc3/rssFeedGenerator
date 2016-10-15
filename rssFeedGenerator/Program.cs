@@ -29,11 +29,16 @@ namespace rssFeedGenerator
             Random rnd = new Random();
             while (true)
             {
-                objekt.update();
+                objekt.update();                
                 string json = JsonConvert.SerializeObject(objekt);
                 System.IO.File.WriteAllText(Program.savefile, json);
                 Thread.Sleep(rnd.Next(10, 30) * 1000);
             }            
+        }
+
+        public static void log(string _msg)
+        {
+            Console.WriteLine(_msg);
         }
     }
 }
