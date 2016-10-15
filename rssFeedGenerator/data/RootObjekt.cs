@@ -55,7 +55,7 @@ namespace rssFeedGenerator
             HttpWebRequest request = (HttpWebRequest)WebRequest.Create("http://pr0gramm.com/api/items/get?flags=1");
             request.Method = "GET";
             request.ContentType = "application/x-www-form-urlencoded";
-            request.Accept = "Accept=text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8";
+            request.Accept = "Accept=text/html,application/xhtml+xml,application/xml;q=0.9,*;q=0.8";
 
             HttpWebResponse response = (HttpWebResponse)request.GetResponse();
             string json;
@@ -69,47 +69,47 @@ namespace rssFeedGenerator
         internal string createFeed(string[] _filter)
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("<rss xmlns:atom=\"http://www.w3.org/2005/Atom\" version = \"2.0\">");
-            sb.Append("<channel>");
-            sb.Append("<title>Pr0gramm</title>");
-            sb.Append("<link>http://pr0gramm.com</link>");
-            sb.Append("<description>Pr0gramm</ description >");
-            sb.Append("<language > de - de </ language >");
-            sb.Append("<webMaster ></ webMaster >");
+            sb.Append("<rss xmlns:atom=\"http://www.w3.org/2005/Atom\" version = \"2.0\">\r\n");
+            sb.Append("<channel>\r\n");
+            sb.Append("<title>Pr0gramm</title>\r\n");
+            sb.Append("<link>http://pr0gramm.com</link>\r\n");
+            sb.Append("<description>Pr0gramm</description >\r\n");
+            sb.Append("<language > de - de </language >\r\n");
+            sb.Append("<webMaster ></webMaster >\r\n");
             //sb.Append("< atom:link href = "http://me-studium.de/rss.php" rel = "self" type = "application/rss+xml" />
 
             foreach (Item tItem in this.items)
             {
-                foreach(string filter in _filter)
+                foreach (string filter in _filter)
                 {
                     if (tItem.matchesFilter(filter))
                     {
-                        sb.Append("<item>");
-                        sb.Append("<title>");
-                        foreach(Tag tag in tItem.tags)
+                        sb.Append("<item>\r\n");
+                        sb.Append("<title>\r\n");
+                        foreach (Tag tag in tItem.tags)
                         {
-                            //sb.Append(tag.tag);
+                            sb.Append(tag.tag);
                             sb.Append(" ");
-                        }                        
-                        sb.Append("</title>");
-                        sb.Append("<link>");
+                        }
+                        sb.Append("</title>\r\n");
+                        sb.Append("<link>\r\n");
                         sb.Append("http://pr0gramm.com/new/");
                         sb.Append(tItem.id);
-                        sb.Append("</ link>");
-                        //sb.Append("<pubDate >");
-                        //sb.Append(tItem.created);
-                        //sb.Append("</ pubDate >");
-                        sb.Append("<guid>");
+                        sb.Append("</link>\r\n");
+                        sb.Append("<pubDate >");
+                        sb.Append(tItem.created);
+                        sb.Append("</ pubDate >");
+                        sb.Append("<guid>\r\n");
                         sb.Append(tItem.id);
-                        sb.Append("</guid>");
-                        sb.Append("<description >");
+                        sb.Append("</guid>\r\n");
+                        sb.Append("<description >\r\n");
                         sb.Append("<![CDATA[");
                         sb.Append("<img border = 0 src = \"http://img.pr0gramm.com/");
                         sb.Append(tItem.image);
                         sb.Append("\" ></ img >");
-                        sb.Append("]]>");
-                        sb.Append("</description>");
-                        sb.Append("</item>");
+                        sb.Append("]]>\r\n");
+                        sb.Append("</description>\r\n");
+                        sb.Append("</item>\r\n");
                         break;
                     }
                 }
@@ -123,7 +123,7 @@ namespace rssFeedGenerator
             HttpWebRequest request = (HttpWebRequest)WebRequest.Create(string.Concat("http://pr0gramm.com/api/items/info?itemId=", item.id.ToString()));
             request.Method = "GET";
             request.ContentType = "application/x-www-form-urlencoded";
-            request.Accept = "Accept=text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8";
+            request.Accept = "Accept=text/html,application/xhtml+xml,application/xml;q=0.9,*;q=0.8";
 
             HttpWebResponse response = (HttpWebResponse)request.GetResponse();
 
