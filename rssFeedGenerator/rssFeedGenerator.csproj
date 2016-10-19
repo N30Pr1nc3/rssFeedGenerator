@@ -62,6 +62,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="config.cs" />
     <Compile Include="data\Comment.cs" />
     <Compile Include="data\Item.cs" />
     <Compile Include="Program.cs" />
@@ -73,7 +74,6 @@
     </Compile>
     <Compile Include="data\RootObjekt.cs" />
     <Compile Include="data\Tag.cs" />
-    <Compile Include="Webserver\Webserver.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

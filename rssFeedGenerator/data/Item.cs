@@ -42,7 +42,29 @@ namespace rssFeedGenerator
 
         internal bool matchesFilter(string filter)
         {
-            return this._loadet;
+            if (Program.config.minUp < this.up)
+            {
+                return true;
+            }
+            if (this.user == filter)
+            {
+                return true;
+            }
+            foreach(Tag tag in this.tags)
+            {
+                if (tag.tag == filter)
+                {
+                    return true;
+                }
+            }
+            //foreach (Comment comment in this.comments)
+            //{
+            //    if (comment.content.Contains(filter))
+            //    {
+            //        return true;
+            //    }
+            //}
+            return false;
         }
     }
 }
