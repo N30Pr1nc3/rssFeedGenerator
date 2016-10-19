@@ -143,7 +143,7 @@ namespace rssFeedGenerator
                         sb.Append(tItem.id);
                         sb.Append("</link>\r\n");
                         sb.Append("<pubDate>");
-                        DateTime dt = new DateTime(1970, 1, 1).AddSeconds(tItem.created);
+                        dt = new DateTime(1970, 1, 1).AddSeconds(tItem.created);
                         sb.Append(dt.ToUniversalTime().ToString("ddd, dd MMM yyyy HH:mm:ss Z"));
                         sb.Append("</pubDate>");
                         sb.Append("<guid>");
