@@ -42,7 +42,7 @@ namespace rssFeedGenerator
 
         internal bool matchesFilter(string filter)
         {
-            if (this.image.EndsWith("jpg"))
+            if (this.image.EndsWith("mp4"))
             {
                 return false;
             }
