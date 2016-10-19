@@ -42,6 +42,10 @@ namespace rssFeedGenerator
 
         internal bool matchesFilter(string filter)
         {
+            if (this.image.EndsWith("jpg"))
+            {
+                return false;
+            }
             if (Program.config.minUp < this.up)
             {
                 return true;
