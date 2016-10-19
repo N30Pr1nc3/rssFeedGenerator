@@ -114,6 +114,12 @@ namespace rssFeedGenerator
             sb.Append("<description>Pr0gramm</description >\r\n");
             sb.Append("<language >de-de</language>\r\n");
             sb.Append("<webMaster ></webMaster >\r\n");
+            sb.Append("<updated>");
+            DateTime dt = DateTime.Now;
+            sb.Append(dt.ToUniversalTime().ToString("ddd, dd MMM yyyy HH:mm:ss Z"));
+            sb.Append("</updated>\r\n");
+
+
             //sb.Append("< atom:link href = "http://me-studium.de/rss.php" rel = "self" type = "application/rss+xml" />
 
             foreach (Item tItem in this._items)
