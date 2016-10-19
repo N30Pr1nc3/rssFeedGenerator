@@ -43,7 +43,8 @@ namespace rssFeedGenerator
                     System.IO.File.WriteAllText(config.programm, Encoding.UTF8.GetString(bytes));
                     int inter = Program.config.RefreshIntervall;
                     int variants= Program.config.RefreshIntervall;
-                    Thread.Sleep(rnd.Next(inter-(int)(variants*0.5)*1000, inter + (int)(variants * 0.5) * 1000));
+                    int random = rnd.Next(inter - (int)(variants * 0.5), inter + (int)(variants * 0.5)) * 1000;
+                    Thread.Sleep(random);
                 }
             }
             else
