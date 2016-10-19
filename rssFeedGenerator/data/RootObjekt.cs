@@ -71,6 +71,10 @@ namespace rssFeedGenerator
 
         private void ProcessRoot()
         {
+            if (this.items == null)
+            {
+                return;
+            }
             foreach(Item item in this.items)
             {
                 bool import = true;
