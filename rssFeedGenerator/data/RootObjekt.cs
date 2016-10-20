@@ -37,9 +37,9 @@ namespace rssFeedGenerator
             }
             foreach(Item item in this._items)
             {
-                Program.log("update Item");
                 if (!item.loadet)
                 {
+                    Program.log("update Item");
                     this.updateItem(item);
                     return;
                 }
@@ -106,6 +106,8 @@ namespace rssFeedGenerator
 
         internal string createFeed(string[] _filter)
         {
+            Program.log("creating Feed:");
+            int itemcounter = 0;
             StringBuilder sb = new StringBuilder();
             sb.Append("<rss xmlns:atom=\"http://www.w3.org/2005/Atom\" version = \"2.0\">\r\n");
             sb.Append("<channel>\r\n");
@@ -128,6 +130,7 @@ namespace rssFeedGenerator
                 {
                     if (tItem.matchesFilter(filter))
                     {
+                        itemcounter++;
                         sb.Append("<item>\r\n");
                         sb.Append("<title>");
                         sb.Append(this.XmlEscape(tItem.user));
@@ -194,6 +197,7 @@ namespace rssFeedGenerator
                 }
             }
             sb.Append("</channel></rss>");
+            Program.log(string.Concat("items in feed:", itemcounter));
             return sb.ToString();
         }
 

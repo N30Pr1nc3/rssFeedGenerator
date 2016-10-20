@@ -16,6 +16,7 @@ namespace rssFeedGenerator
         private bool _loadet = false;
 
         public bool loadet { get { return this._loadet; } set { this._loadet = value; } }
+        public bool listed { get; set; }
 
         public List<Tag> tags { get { return this._tags; } set { this._tags = value; } }
         public List<Comment> comments { get { return this._comment; } set { this._comment = value; } }
@@ -42,22 +43,29 @@ namespace rssFeedGenerator
 
         internal bool matchesFilter(string filter)
         {
+            if (this.listed)
+            {
+                return true;
+            }
             if (this.image.EndsWith("mp4"))
             {
                 return false;
             }
             if (Program.config.minUp < this.up)
             {
+                this.listed = true;
                 return true;
             }
             if (this.user == filter)
             {
+                this.listed = true;
                 return true;
             }
             foreach(Tag tag in this.tags)
             {
                 if (tag.tag == filter)
                 {
+                    this.listed = true;
                     return true;
                 }
             }

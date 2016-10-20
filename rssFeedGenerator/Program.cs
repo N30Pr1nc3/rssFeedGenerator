@@ -53,6 +53,12 @@ namespace rssFeedGenerator
             }           
         }
 
+        //public static void status()
+        //{
+        //    Program.log("Status:\r\n");
+        //    Program.log("items:")
+        //}
+
         public static void log(string _msg)
         {
             Console.WriteLine(_msg);
