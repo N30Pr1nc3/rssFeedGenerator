@@ -75,6 +75,7 @@ namespace rssFeedGenerator
             {
                 return;
             }
+            int addetItems = 0;
             foreach(Item item in this.items)
             {
                 bool import = true;
@@ -88,10 +89,13 @@ namespace rssFeedGenerator
                 }
                 if (import)
                 {
+                    addetItems++;
                     this._items.Add(item);
                 }
             }
+            Program.log(string.Concat("neue Items:", addetItems));
             this.items.Clear();
+            Program.log(string.Concat("deletedItems Items:", this._items.Count-1000));
             this._items = this._items.Take(1000).ToList();
 
         }
